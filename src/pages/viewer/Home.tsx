@@ -10,6 +10,16 @@ height: 100%;
 background-color: #a8dbdc;
 `;
 
+/*
+  const PropsBox = styled.div(props => ({
+    background: props.background,
+    height: '50px',
+    width: '50px'
+  }));
+  <PropsBox background="blue" />
+  props로 받을때는 이렇게.
+*/
+
 const HomeMainDiv = styled.div`
 display: flex;
 width: 100%;
