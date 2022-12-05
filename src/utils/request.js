@@ -66,7 +66,7 @@ localStorage.setItem(
 )
 localStorage.setItem('reactAppFileUri', configMap[`REACT_APP_FILE_URI${postfix}`])
 
-const service = axios.create({
+const axiosService = axios.create({
   baseURL: localStorage.getItem('reactAppApiUri'),
   timeout: JSON.parse(process.env['REACT_APP_AXIOS_TIMEOUT'])
 })
@@ -83,7 +83,7 @@ function uuid() {
 */
 
 // request interceptor
-service.interceptors.request.use((config) => {
+axiosService.interceptors.request.use((config) => {
   // Do something before request is sent
   if (getToken()) {
     config.headers['authorization'] = getToken()
@@ -92,7 +92,7 @@ service.interceptors.request.use((config) => {
 })
 
 // respone interceptor
-service.interceptors.response.use(
+axiosService.interceptors.response.use(
   (res) => {
     const token = res.headers.authorization
     if (token) {
@@ -189,4 +189,4 @@ service.interceptors.response.use(
   }
 )
 
-export default service
+export default axiosService
